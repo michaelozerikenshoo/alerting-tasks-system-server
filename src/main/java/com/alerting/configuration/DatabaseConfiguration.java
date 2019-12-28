@@ -57,21 +57,13 @@ public class DatabaseConfiguration {
         return new DefaultDSLContext(configuration());
     }
 
-//    @Bean
-//    public DSLContext dslcontext() {
-//        return new DefaultDSLContext(configuration());
-//    }
-
     @Bean
     public DefaultConfiguration configuration() {
         DefaultConfiguration jooqConfiguration = new DefaultConfiguration();
         jooqConfiguration.set(connectionProvider());
         jooqConfiguration.set(new DefaultExecuteListenerProvider(exceptionTransformer()));
-
         String sqlDialectName = environment.getRequiredProperty("jooq.sql.dialect");
-        SQLDialect dialect = SQLDialect.valueOf(sqlDialectName);
-        jooqConfiguration.set(dialect);
-
+        jooqConfiguration.set(SQLDialect.valueOf(sqlDialectName));
         return jooqConfiguration;
     }
 
