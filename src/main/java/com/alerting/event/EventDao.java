@@ -1,6 +1,9 @@
 package com.alerting.event;
 
-import org.jooq.DSLContext;
+import org.jooq.Record;
+import org.jooq.ResultQuery;
+import org.jooq.RowCountQuery;
+import org.jooq.impl.DefaultDSLContext;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -11,7 +14,7 @@ import java.util.List;
 public class EventDao { //TODO:finish
 
     @Resource
-    private DSLContext dslcontext;
+    private DefaultDSLContext defaultDSLContext;
 
     public Event getEventById(int id) {
         Event event = new Event();
