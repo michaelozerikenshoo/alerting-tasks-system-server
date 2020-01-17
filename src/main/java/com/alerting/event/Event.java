@@ -1,13 +1,11 @@
 package com.alerting.event;
 
-import java.sql.Time;
 import java.util.Date;
 
 public class Event {
 
     private int id;
-    private Date date;
-    private Time time;
+    private String createDate;
     private String task;
     private String reportBackMethod;
     private String from;
@@ -15,7 +13,7 @@ public class Event {
     private String content;
     private String actionsMade;
     private EventStatus status;
-    private Date timeOfClosue;
+    private Date timeOfClosure;
     private String rasham;
 
     public int getId() {
@@ -26,20 +24,12 @@ public class Event {
         this.id = id;
     }
 
-    public Date getDate() {
-        return date;
+    public String getCreateDate() {
+        return createDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public Time getTime() {
-        return time;
-    }
-
-    public void setTime(Time time) {
-        this.time = time;
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
     }
 
     public String getTask() {
@@ -98,12 +88,12 @@ public class Event {
         this.status = status;
     }
 
-    public Date getTimeOfClosue() {
-        return timeOfClosue;
+    public Date getTimeOfClosure() {
+        return timeOfClosure;
     }
 
-    public void setTimeOfClosue(Date timeOfClosue) {
-        this.timeOfClosue = timeOfClosue;
+    public void setTimeOfClosure(Date timeOfClosure) {
+        this.timeOfClosure = timeOfClosure;
     }
 
     public String getRasham() {

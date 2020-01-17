@@ -22,7 +22,7 @@ public class DatabaseConfiguration {
     }
 
     @Bean
-    public DefaultDSLContext dsl() {
+    public DefaultDSLContext dslContext() {
         return new DefaultDSLContext(configuration());
     }
 

@@ -10,34 +10,40 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
-@RequestMapping("/api")
+@RequestMapping("/api/event")
 public class EventController {
 
     @Resource
     private EventService eventService;
 
     @ResponseBody
-    @RequestMapping(path = "/event/{id}", method = RequestMethod.GET)
-    public Event getEvent(@PathVariable(name = "id") int id) {
-        return eventService.getEventById(id);
+    @RequestMapping(path = "/{eventId}", method = RequestMethod.GET)
+    public Event getEventById(@PathVariable(name = "eventId") int eventId) {
+        return eventService.getEventById(eventId);
     }
 
     @ResponseBody
-    @RequestMapping(path = "/event", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public List<Event> getAllEvents() {
         return eventService.getAllEvents();
     }
 
     @ResponseBody
-    @RequestMapping(path = "/event", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public int updateEvent(HttpServletRequest request, @RequestBody Event event) {
-        return eventService.updateEvent(event).getId();
+        return eventService.updateEvent(event);
     }
 
     @ResponseBody
-    @RequestMapping(path = "/event", method = RequestMethod.PUT)
+    @RequestMapping(method = RequestMethod.PUT)
     public int createEvent(HttpServletRequest request, @RequestBody Event event) {
-        return eventService.createEvent(event).getId();
+        return eventService.createEvent(event);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/{eventId}", method = RequestMethod.DELETE)
+    public int deleteEventById(@PathVariable(name = "eventId") int eventId) {
+        return eventService.deleteEventById(eventId);
     }
 
 }

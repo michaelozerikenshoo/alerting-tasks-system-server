@@ -19,11 +19,15 @@ public class EventService {
         return eventDao.getAllEvents();
     }
 
-    public Event updateEvent(Event event) {
+    public int updateEvent(Event event) {
         return eventDao.updateEvent(event);
     }
 
-    public Event createEvent(Event event) {
+    public int createEvent(Event event) {
         return eventDao.creteEvent(event);
+    }
+
+    public int deleteEventById(int eventId) {
+        return eventDao.deleteEventById(eventId);
     }
 }
