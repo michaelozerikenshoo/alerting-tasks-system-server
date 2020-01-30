@@ -12,22 +12,26 @@ public class EventService {
     private EventDao eventDao;
 
     public Event getEventById(int id) {
-        return eventDao.getEventById(id);
+        return eventDao.getById(id);
     }
 
-    public List<Event> getAllEvents() {
-        return eventDao.getAllEvents();
+    public Event getEventByIdAndStatus(int id,EventStatus eventStatus) {
+        return eventDao.getByIdAndStatus(id,eventStatus);
+    }
+
+    public List<Event> getEventsByPageNumber(int pageNumber, int maxRowsPerPage) {
+        return eventDao.getByPageNumber(pageNumber,maxRowsPerPage);
     }
 
     public int updateEvent(Event event) {
-        return eventDao.updateEvent(event);
+        return eventDao.update(event);
     }
 
     public int createEvent(Event event) {
-        return eventDao.creteEvent(event);
+        return eventDao.create(event);
     }
 
     public int deleteEventById(int eventId) {
-        return eventDao.deleteEventById(eventId);
+        return eventDao.deleteById(eventId);
     }
 }
