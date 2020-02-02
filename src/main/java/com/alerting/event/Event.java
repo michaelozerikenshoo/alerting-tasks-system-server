@@ -8,8 +8,8 @@ public class Event {
     private String createDate;
     private String task;
     private String reportBackMethod;
-    private String from;
-    private String to;
+    private String addressed;
+    private String addressee;
     private String content;
     private String actionsMade;
     private EventStatus status;
@@ -48,20 +48,20 @@ public class Event {
         this.reportBackMethod = reportBackMethod;
     }
 
-    public String getFrom() {
-        return from;
+    public String getAddressed() {
+        return addressed;
     }
 
-    public void setFrom(String from) {
-        this.from = from;
+    public void setAddressed(String addressed) {
+        this.addressed = addressed;
     }
 
-    public String getTo() {
-        return to;
+    public String getAddressee() {
+        return addressee;
     }
 
-    public void setTo(String to) {
-        this.to = to;
+    public void setAddressee(String addressee) {
+        this.addressee = addressee;
     }
 
     public String getContent() {

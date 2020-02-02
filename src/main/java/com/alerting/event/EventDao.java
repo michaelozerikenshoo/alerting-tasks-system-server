@@ -4,8 +4,6 @@ import org.jooq.impl.DefaultDSLContext;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import static org.jooq.impl.DSL.row;
@@ -34,8 +32,8 @@ public class EventDao {
     public int update(Event event) {
         return dslContext.update(EventTable.TABLE_NAME)
                 .set(
-                        row(EventTable.task, EventTable.reportBackMethod, EventTable.from, EventTable.to, EventTable.content, EventTable.actionsMade, EventTable.status, EventTable.timeOfClosure, EventTable.rasham),
-                        row(event.getTask(), event.getReportBackMethod(), event.getFrom(), event.getTo(), event.getContent(), event.getActionsMade(), event.getStatus(), event.getTimeOfClosure(), event.getRasham())
+                        row(EventTable.task, EventTable.addressed, EventTable.addressee, EventTable.content, EventTable.actionsMade, EventTable.status, EventTable.timeOfClosure, EventTable.rasham),
+                        row(event.getTask(), event.getAddressed(), event.getAddressee(), event.getContent(), event.getActionsMade(), event.getStatus(), event.getTimeOfClosure(), event.getRasham())
                 )
                 .where(EventTable.id.eq(event.getId()))
                 .execute();
@@ -44,12 +42,11 @@ public class EventDao {
     public int create(Event event) {
         return dslContext.insertInto(EventTable.TABLE_NAME)
                 .set(EventTable.task, event.getTask())
-                .set(EventTable.reportBackMethod, event.getReportBackMethod())
-                .set(EventTable.from, event.getFrom())
-                .set(EventTable.to, event.getTo())
+                .set(EventTable.addressed, event.getAddressed())
+                .set(EventTable.addressee, event.getAddressee())
                 .set(EventTable.content, event.getContent())
                 .set(EventTable.actionsMade, event.getActionsMade())
-                .set(EventTable.status, event.getStatus())
+                .set(EventTable.status, event.getStatus().name())
                 .set(EventTable.timeOfClosure, event.getTimeOfClosure())
                 .set(EventTable.rasham, event.getRasham())
                 .execute();
